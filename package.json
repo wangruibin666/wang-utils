@@ -1,0 +1,25 @@
+{
+  "name": "wangs-utils",
+  "version": "1.0.0",
+  "description": "",
+  "main": "./dist/wang_utils.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build:watch": "webpack --watch"
+  },
+  "keywords": [
+    "wang",
+    "utils",
+    "array",
+    "object",
+    "function",
+    "promise",
+    "axios"
+  ],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "webpack": "^5.38.1",
+    "webpack-cli": "^4.7.2"
+  }
+}
