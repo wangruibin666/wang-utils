@@ -14,3 +14,39 @@ export function palindrome (str) {
 export function truncate(str, num) {
   return str.length>num ? str.substring(0, num) + '...': str
 }
+
+/**
+ * 
+ * @param {number|string} timestamp 
+ * @param {string} format 'year' || 'month' || 'day' || 'hour' || 'minute' || 'second' 
+ * @returns 
+ */
+export function getDate(timestamp, format){
+  if(timestamp && isNaN(timestamp))return false;
+  if((timestamp+'').includes('.')) return false;
+  var _timestamp = timestamp || new Date().getTime();
+  function add0(m){return m<10?'0'+m:m }
+  var time = new Date(Number(_timestamp));
+  var y = time.getFullYear();
+  var m = time.getMonth()+1;
+  var d = time.getDate();
+  var h = time.getHours();
+  var m = time.getMinutes();
+  var s = time.getSeconds();
+  switch(format){
+    case 'year':
+      return y;
+    case 'month':
+      return y+'-'+add0(m);
+    case 'day':
+      return y+'-'+add0(m)+'-'+add0(d);
+    case 'hour':
+      return y+'-'+add0(m)+'-'+add0(d)+' '+add0(h);
+    case 'minute':
+      return y+'-'+add0(m)+'-'+add0(d)+' '+add0(h)+':'+add0(m);
+    case 'second': 
+      return y+'-'+add0(m)+'-'+add0(d)+' '+add0(h)+':'+add0(m)+':'+add0(s);
+    default: 
+      return y+'-'+add0(m)+'-'+add0(d)+' '+add0(h)+':'+add0(m)+':'+add0(s);
+  }
+}
