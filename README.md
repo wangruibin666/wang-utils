@@ -47,6 +47,12 @@ import * as wUtils from 'wangs-utils/dist/wang_utils';
 
     formatFloat(2.1,2) //=> 2.10
 
+3.俩个大数字相加：sumBigNumber(a,b)
+ /*
+  @param {string} a 
+  @param {string} b
+ */
+
 ```
 
 ### 3.优化(防抖,节流)
@@ -76,5 +82,22 @@ import * as wUtils from 'wangs-utils/dist/wang_utils';
 ```javascript
 1.对比俩个对象是否相等：deepCompare(x, y)
  deepCompare({a:1},{a:1}) //=> true
+```
+
+### 数组的操作
+
+```javascript
+1.数组平铺(降维)：deepFlatten(arr)
+
+2.树形数据：
+	1>对树形数据进行提取，比如级联选择器，需要获取每一级的某些数据
+		extractTree(arrs,childs,attrArr)
+		/*
+		 @param {Array} arrs 树形数据
+         @param {string} childs 树形数据子数据的属性名,常用'children'
+         @param {Array} attrArr 需要提取的公共属性数组
+		*/
+
+	2>
 ```
 
