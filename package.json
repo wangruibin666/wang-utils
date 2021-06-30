@@ -15,7 +15,8 @@
     "function",
     "promise",
     "axios",
-    "date"
+    "date",
+    "time"
   ],
   "author": "",
   "license": "ISC",
