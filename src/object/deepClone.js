@@ -74,7 +74,7 @@ export function deepClone3 (target, map=new Map()) {
 /* 
 优化数组的遍历: 不用for...in, 而用forEach
 */
-export function deepClone4 (target, map=new Map()) {
+export function deepClone (target, map=new Map()) {
   // 被处理的目标是数组/对象
   if (target instanceof Array || (target!==null && typeof target==='object')) {
     // map中存在对应的克隆对象, 直接将其返回
