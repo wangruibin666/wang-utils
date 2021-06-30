@@ -1,5 +1,20 @@
 # 工具函数
+## 安装
+
+```
+npm i wangs-utils
+```
+
+## 使用
+
+```
+import * as wUtils from 'wangs-utils/dist/wang_utils';
+```
+
+
+
 ## 0. 工具函数库: lodash
+
     1. 封装了各种类型数据简化操作的函数库
         数组
         对象
