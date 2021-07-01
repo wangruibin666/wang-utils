@@ -89,7 +89,7 @@ export function deepClone (target, map=new Map()) {
       map.set(target, cloneTarget)
       // 向数组添加元素
       target.forEach((item, index) => {
-        cloneTarget[index] = deepClone4(item, map)
+        cloneTarget[index] = deepClone(item, map)
       })
     } else {
       cloneTarget = {}
@@ -98,7 +98,7 @@ export function deepClone (target, map=new Map()) {
       // 向对象添加属性
       for (const key in target) {
         if (target.hasOwnProperty(key)) {
-          cloneTarget[key] = deepClone4(target[key], map)  // 对属性值进行递归处理
+          cloneTarget[key] = deepClone(target[key], map)  // 对属性值进行递归处理
         }
       }
     }

@@ -16,7 +16,10 @@
     "promise",
     "axios",
     "date",
-    "time"
+    "time",
+    "tree",
+    "format",
+    "deepClone"
   ],
   "author": "",
   "license": "ISC",

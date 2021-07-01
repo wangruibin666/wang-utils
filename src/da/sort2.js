@@ -8,7 +8,7 @@
     对每个小数组进行插入排序
     每个小数组排序是交替进行
 */
-function shellSort (arr) {
+export function shellSort (arr) {
   const len = arr.length
   let distance = len
   while (distance>1) {

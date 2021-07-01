@@ -23,3 +23,34 @@ export function extractTree(arrs,childs,attrArr){
   }
   return getObj(arrs);
 }
+
+/**
+ * 
+ * @param {Array} data 
+ * @param {string} pid 子树找父级的标识
+ * @param {string} child 自定义子树字段名称
+ * @returns 
+ */
+export function makeTree(data,pid,child){
+  let parents = data.filter(p => p[pid] === 0),
+      children = data.filter(c => c[pid] !== 0);
+  dataToTree(parents, children);
+  return parents;
+
+  function dataToTree(parents, children){
+    parents.map(p => {
+      children.map((c, i) => {
+        if(c[pid] === p.id){
+          let _children = JSON.parse(JSON.stringify(children));
+          _children.splice(i, 1);
+          dataToTree([c], _children);
+          if(p[child]){
+            p[child].push(c);
+          }else{
+            p[child] = [c];
+          }
+        }
+      })
+    })
+  }
+}
