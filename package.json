@@ -12,6 +12,8 @@
     "utils",
     "array",
     "object",
+    "number",
+    "string",
     "function",
     "promise",
     "axios",
