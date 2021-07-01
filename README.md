@@ -10,7 +10,7 @@ npm i wangs-utils
 import * as wUtils from 'wangs-utils/dist/wang_utils';
 ```
 
-## 项目中常用方法归类：
+## 项目中常用方法归类(持续更新)：
 
 ### 1.日期和时间戳
 
@@ -130,6 +130,7 @@ import * as wUtils from 'wangs-utils/dist/wang_utils';
          * @param {string} child 自定义子树字段名称
          * @returns 
          */
+
 3.对比俩个数组是否相等
   compareArr(arr1, arr2)
   /**
@@ -162,9 +163,8 @@ import * as wUtils from 'wangs-utils/dist/wang_utils';
 ### 7.字符串
 
 ```javascript
-1. 获得url中的query并返回对象： getQuery(url)
 
-2.去除空格: trim(str, type)
+1.去除空格: trim(str, type)
  /**
  * 去除空格
  * @param {str}
@@ -173,7 +173,7 @@ import * as wUtils from 'wangs-utils/dist/wang_utils';
  * @return {String}
  */
 
-3.大小写：changeCase(str, type)
+2.大小写：changeCase(str, type)
  /**
  * @param {str} 
  * @param {type}
@@ -186,8 +186,31 @@ import * as wUtils from 'wangs-utils/dist/wang_utils';
 ### 8.浏览器
 
 ```javascript
-1.获取浏览器的类型：browserType() //=> 'Opera' || 'Safari'...
+1. 获取浏览器的类型：browserType() //=> 'Opera' || 'Safari'...
 
-2.封装storage
+2. 获得url中的query并返回对象： getQuery(url)
+
+3. 封装storage
+    1>设置cookie: 			 setCookie(name, value, day) // name: 名称, value: 值, day: 过期时间
+
+	2>获取cookie：		    getCookie(name)
+
+	3>删除cookie: 			 removeCookie(name)
+
+	4>设置localStorage: 	 setLocal(key, val)
+
+    5>获取localStorage: 	 getLocal(key)
+
+	6>移除localStorage: 	 removeLocal(key)
+
+	7>移除所有localStorage:   clearLocal()
+
+	8>设置sessionStorage:    setSession(key, val)
+
+    9>获取sessionStorage: 	 getSession(key)
+
+	10>移除sessionStorage: 	 removeSession(key)
+
+	11>移除所有sessionStorage: clearSession()
 ```
 
