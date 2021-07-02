@@ -1,3 +1,7 @@
+## 项目中常用方法归类(持续更新...)：
+
+
+
 ## 安装
 
 ```
@@ -10,7 +14,11 @@ npm i wangs-utils
 import * as wUtils from 'wangs-utils/dist/wang_utils';
 ```
 
-## 项目中常用方法归类(持续更新)：
+## 源码地址
+
+[传送:](https://github.com/wangruibin666/wang-utils)
+
+
 
 ### 1.日期和时间戳
 
@@ -40,8 +48,6 @@ import * as wUtils from 'wangs-utils/dist/wang_utils';
  * param{number} f 日期分隔符 '-'、'/'...
  * */
 ```
-
-
 
 ### 2.对数字的处理
 
@@ -199,25 +205,25 @@ import * as wUtils from 'wangs-utils/dist/wang_utils';
 2. 获得url中的query并返回对象： getQuery(url)
 
 3. 封装storage
-    1>设置cookie: 			 setCookie(name, value, day) // name: 名称, value: 值, day: 过期时间
+    1>设置cookie: setCookie(name, value, day) // name: 名称, value: 值, day: 过期时间
 
-	2>获取cookie：		    getCookie(name)
+	2>获取cookie：getCookie(name)
 
-	3>删除cookie: 		removeCookie(name)
+	3>删除cookie: removeCookie(name)
 
-	4>设置localStorage: 	 setLocal(key, val)
+	4>设置localStorage: setLocal(key, val)
 
-    5>获取localStorage: 	 getLocal(key)
+    5>获取localStorage: getLocal(key)
 
-	6>移除localStorage: 	 removeLocal(key)
+	6>移除localStorage: removeLocal(key)
 
-	7>移除所有localStorage:   clearLocal()
+	7>移除所有localStorage: clearLocal()
 
-	8>设置sessionStorage:    setSession(key, val)
+	8>设置sessionStorage: setSession(key, val)
 
-    9>获取sessionStorage: 	 getSession(key)
+    9>获取sessionStorage:	getSession(key)
 
-	10>移除sessionStorage: 	 removeSession(key)
+	10>移除sessionStorage: removeSession(key)
 
 	11>移除所有sessionStorage: clearSession()
 ```
