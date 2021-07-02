@@ -142,7 +142,15 @@ import * as wUtils from 'wangs-utils/dist/wang_utils';
 
 4.数组的深拷贝：deepClone(arr)
 
+5.数组去重：unique(arr)
 
+6.由对象组成的数组，按属性去重：uniqueByAttr(array, key)
+ /**
+ * 
+ * @param {Array} array 
+ * @param {string} key 对象的属性名
+ * @returns {Array}
+ */
 ```
 
 ### 6.数据类型
