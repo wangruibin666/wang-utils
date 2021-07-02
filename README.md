@@ -203,7 +203,7 @@ import * as wUtils from 'wangs-utils/dist/wang_utils';
 
 	2>获取cookie：		    getCookie(name)
 
-	3>删除cookie: 			 removeCookie(name)
+	3>删除cookie: 		removeCookie(name)
 
 	4>设置localStorage: 	 setLocal(key, val)
 
