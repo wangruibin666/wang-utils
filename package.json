@@ -21,7 +21,8 @@
     "time",
     "tree",
     "format",
-    "deepClone"
+    "deepClone",
+    "storage"
   ],
   "author": "",
   "license": "ISC",
