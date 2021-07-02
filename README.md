@@ -20,7 +20,7 @@ import * as wUtils from 'wangs-utils/dist/wang_utils';
      timestamp: 时间戳，默认当前时间戳
      format: 期望的日期格式，精确到：'year' || 'month' || 'day' || 'hour' || 'minute' || 'second' 默认到秒
     */
-	getDate() //=> "2021-45-28 19:45:29"
+	getDate() //=> "2021-07-02 09:27:39"
 2.时间戳相差间隔：stampInterval (stamp1, stamp2)
  /**
  * 
