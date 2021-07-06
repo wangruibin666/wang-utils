@@ -40,7 +40,7 @@ export function formatAmount(amount) {
 		return false;
 	}
 	amounts = Math.abs(amount)
-	amounts = '' + (Number(amounts) + 0.004).toFixed(2);
+	amounts = '' + Number(amounts).toFixed(2);
 	var x = amounts.split('.');
 	var x1 = x[0];
 	var x2 = '.' + x[1];
