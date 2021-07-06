@@ -11,7 +11,7 @@ export default {
     file   : 'dist/wang_utils.js',
     format : 'umd',
     name   : 'wang',
-    sourcemap: true
+    sourcemap: false
   },
   plugins : [
     json(),
