@@ -40,7 +40,7 @@ import * as wUtils from 'wangs-utils/dist/wang_utils';
 3.日期对比大小：compareDate(d1,d2)
 	var current_time = "2007-2-2 7:30";
     var stop_time = "2007-1-31 8:30";
-    console.log(CompareDate(current_time,stop_time)); //=>true
+    console.log(compareDate(current_time,stop_time)); //=>true
 
 4.获得据当天n天的日期：dateByday(num, f)
  /**
@@ -107,8 +107,8 @@ import * as wUtils from 'wangs-utils/dist/wang_utils';
 ### 4.对象的操作
 
 ```javascript
-1.对比俩个对象是否相等：deepCompare(x, y)
- deepCompare({a:1},{a:1}) //=> true
+1.对比俩个对象是否相等：compareObj(x, y)
+ compareObj({a:1},{a:1}) //=> true
 
 2.对象深拷贝：deepClone(obj)
 ```
