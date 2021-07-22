@@ -264,14 +264,16 @@ export function amountToChinese(Num) {
 		}
 	}
 	//替换所有无用汉字
-	while (newchar.search("零零") != -1)
-		newchar = newchar.replace("零零", "零");
-	newchar = newchar.replace("零亿", "亿");
-	newchar = newchar.replace("亿万", "亿");
-	newchar = newchar.replace("零万", "万");
-	newchar = newchar.replace("零元", "元");
-	newchar = newchar.replace("零角", "");
-	newchar = newchar.replace("零分", "");
+	while(newchar.includes('零零')||newchar.includes('零亿')||newchar.includes('亿万')||newchar.includes('零万')||newchar.includes('零元')||newchar.includes('零角')||newchar.includes('零分')){
+		newchar = newchar.replace(/零零/g, "零")
+		newchar = newchar.replace(/零亿/g, "亿")
+		newchar = newchar.replace(/亿万/g, "亿")
+		newchar = newchar.replace(/零万/g, "万")
+		newchar = newchar.replace(/零元/g, "元")
+		newchar = newchar.replace(/零角/g, "")
+		newchar = newchar.replace(/零分/g, "")
+	}
+	
 	if (newchar.charAt(newchar.length - 1) == "元") {
 		newchar = newchar + "整"
 	}
