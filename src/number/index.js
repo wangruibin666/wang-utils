@@ -128,154 +128,79 @@ export function numToChinese(num) {
 
 
 /*将数字转换为大写金额*/
-export function amountToChinese(Num) {
-	//判断如果传递进来的不是字符的话转换为字符
-	if (typeof Num == "number") {
-		Num = new String(Num);
-	};
-	Num = Num.replace(/,/g, "") //替换tomoney()中的“,”
-	Num = Num.replace(/ /g, "") //替换tomoney()中的空格
-	Num = Num.replace(/￥/g, "") //替换掉可能出现的￥字符
-	if (isNaN(Num)) { //验证输入的字符是否为数字
-		//alert("请检查小写金额是否正确");
-		return "";
-	};
-	//字符处理完毕后开始转换，采用前后两部分分别转换
-	var part = String(Num).split(".");
-	var newchar = "";
-	//小数点前进行转化
-	for (var i = part[0].length - 1; i >= 0; i--) {
-		if (part[0].length > 10) {
-			return "";
-			//若数量超过拾亿单位，提示
-		}
-		var tmpnewchar = ""
-		var perchar = part[0].charAt(i);
-		switch (perchar) {
-			case "0":
-				tmpnewchar = "零" + tmpnewchar;
-				break;
-			case "1":
-				tmpnewchar = "壹" + tmpnewchar;
-				break;
-			case "2":
-				tmpnewchar = "贰" + tmpnewchar;
-				break;
-			case "3":
-				tmpnewchar = "叁" + tmpnewchar;
-				break;
-			case "4":
-				tmpnewchar = "肆" + tmpnewchar;
-				break;
-			case "5":
-				tmpnewchar = "伍" + tmpnewchar;
-				break;
-			case "6":
-				tmpnewchar = "陆" + tmpnewchar;
-				break;
-			case "7":
-				tmpnewchar = "柒" + tmpnewchar;
-				break;
-			case "8":
-				tmpnewchar = "捌" + tmpnewchar;
-				break;
-			case "9":
-				tmpnewchar = "玖" + tmpnewchar;
-				break;
-		}
-		switch (part[0].length - i - 1) {
-			case 0:
-				tmpnewchar = tmpnewchar + "元";
-				break;
-			case 1:
-				if (perchar != 0) tmpnewchar = tmpnewchar + "拾";
-				break;
-			case 2:
-				if (perchar != 0) tmpnewchar = tmpnewchar + "佰";
-				break;
-			case 3:
-				if (perchar != 0) tmpnewchar = tmpnewchar + "仟";
-				break;
-			case 4:
-				tmpnewchar = tmpnewchar + "万";
-				break;
-			case 5:
-				if (perchar != 0) tmpnewchar = tmpnewchar + "拾";
-				break;
-			case 6:
-				if (perchar != 0) tmpnewchar = tmpnewchar + "佰";
-				break;
-			case 7:
-				if (perchar != 0) tmpnewchar = tmpnewchar + "仟";
-				break;
-			case 8:
-				tmpnewchar = tmpnewchar + "亿";
-				break;
-			case 9:
-				tmpnewchar = tmpnewchar + "拾";
-				break;
-		}
-		var newchar = tmpnewchar + newchar;
+export function amountToChinese(amt) {
+	let numberValue = Math.round(amt * 100) + '' // 数字金额(转为以分为单位)
+	let flag = ''
+	let chineseValue = ''          // 转换后的汉字金额
+	let String1 = '零壹贰叁肆伍陆柒捌玖'       // 汉字数字
+	let String2 = '万仟佰拾亿仟佰拾万仟佰拾元角分'     // 对应单位
+	let len = numberValue.length         // numberValue 的字符串长度
+	let Ch1             // 数字的汉语读法
+	let Ch2             // 数字位的汉字读法
+	let nZero = 0            // 用来计算连续的零值的个数
+	let String3            // 指定位置的数值
+
+	if (numberValue.substr(0, 1) === '-') {
+		flag = '负'
+		numberValue = numberValue.substr(1, numberValue.length)
+	} else if (numberValue.substr(0, 1) === '+') {
+		numberValue = numberValue.substr(1, numberValue.length)
 	}
-	//小数点之后进行转化
-	if (Num.indexOf(".") != -1) {
-		if (part[1].length > 2) {
-			// alert("小数点之后只能保留两位,系统将自动截断");
-			part[1] = part[1].substr(0, 2)
-		}
-		for (i = 0; i < part[1].length; i++) {
-			tmpnewchar = ""
-			perchar = part[1].charAt(i)
-			switch (perchar) {
-				case "0":
-					tmpnewchar = "零" + tmpnewchar;
-					break;
-				case "1":
-					tmpnewchar = "壹" + tmpnewchar;
-					break;
-				case "2":
-					tmpnewchar = "贰" + tmpnewchar;
-					break;
-				case "3":
-					tmpnewchar = "叁" + tmpnewchar;
-					break;
-				case "4":
-					tmpnewchar = "肆" + tmpnewchar;
-					break;
-				case "5":
-					tmpnewchar = "伍" + tmpnewchar;
-					break;
-				case "6":
-					tmpnewchar = "陆" + tmpnewchar;
-					break;
-				case "7":
-					tmpnewchar = "柒" + tmpnewchar;
-					break;
-				case "8":
-					tmpnewchar = "捌" + tmpnewchar;
-					break;
-				case "9":
-					tmpnewchar = "玖" + tmpnewchar;
-					break;
+
+	if (len > 15) {//超出范围（万亿）
+		return amt
+	}
+
+	if (numberValue === '0') {
+		chineseValue = '零元整'
+		return chineseValue
+	}
+
+	String2 = String2.substr(String2.length - len, len)   // 取出对应位数的STRING2的值
+	for (let i = 0; i < String2.length; i++) {
+		String3 = parseInt(numberValue.substr(i, 1), 10)   // 取出需转换的某一位的值
+		if (i !== (len - 3) && i !== (len - 7) && i !== (len - 11) && i !== (len - 15)) {
+			if (String3 === 0) {
+				Ch1 = ''
+				Ch2 = ''
+				nZero = nZero + 1
+			} else if (String3 !== 0 && nZero !== 0) {
+				Ch1 = '零' + String1.substr(String3, 1)
+				Ch2 = String2.substr(i, 1)
+				nZero = 0
+			} else {
+				Ch1 = String1.substr(String3, 1)  //String1.substr(1, 1)壹
+				Ch2 = String2.substr(i, 1)    //仟
+				nZero = 0
 			}
-			if (i == 0) tmpnewchar = tmpnewchar + "角";
-			if (i == 1) tmpnewchar = tmpnewchar + "分";
-			newchar = newchar + tmpnewchar;
+		} else {              // 该位是万亿，亿，万，元位等关键位
+			if (String3 !== 0 && nZero !== 0) {
+				Ch1 = '零' + String1.substr(String3, 1)
+				Ch2 = String2.substr(i, 1)
+				nZero = 0
+			} else if (String3 !== 0 && nZero === 0) {
+				Ch1 = String1.substr(String3, 1)
+				Ch2 = String2.substr(i, 1)
+				nZero = 0
+			} else if (String3 === 0 && nZero >= 3) {
+				Ch1 = ''
+				Ch2 = ''
+				nZero = nZero + 1
+			} else {
+				Ch1 = ''
+				Ch2 = String2.substr(i, 1)
+				nZero = nZero + 1
+			}
+
+			if (i === (len - 11) || i === (len - 3)) {    // 如果该位是亿位或元位，则必须写上
+				Ch2 = String2.substr(i, 1)
+			}
 		}
+		chineseValue = chineseValue + Ch1 + Ch2
 	}
-	//替换所有无用汉字
-	while(newchar.includes('零零')||newchar.includes('零亿')||newchar.includes('亿万')||newchar.includes('零万')||newchar.includes('零元')||newchar.includes('零角')||newchar.includes('零分')){
-		newchar = newchar.replace(/零零/g, "零")
-		newchar = newchar.replace(/零亿/g, "亿")
-		newchar = newchar.replace(/亿万/g, "亿")
-		newchar = newchar.replace(/零万/g, "万")
-		newchar = newchar.replace(/零元/g, "元")
-		newchar = newchar.replace(/零角/g, "")
-		newchar = newchar.replace(/零分/g, "")
+
+	if (String3 === 0) {// 最后一位（分）为0时，加上“整”
+		chineseValue = chineseValue + '整'
 	}
-	
-	if (newchar.charAt(newchar.length - 1) == "元") {
-		newchar = newchar + "整"
-	}
-	return newchar;
+	return flag + chineseValue
 }
