@@ -7,12 +7,21 @@
  * @returns 
  */
 export function extractTree(arrs,childs,attrArr){
+  let attrList = [];
+  if(!Array.isArray(arrs)&&!arrs.length)return [];
+  if(typeof childs !== 'string')return [];
+  if(!Array.isArray(attrArr)||Array.isArray(attrArr)&&!attrArr.length){
+    attrList = Object.keys(arrs[0])
+    attrList.splice(attrList.indexOf(childs), 1)
+  }else{
+    attrList = attrArr;
+  }
   let list = [];
   const getObj = (arr)=>{
     arr.forEach(function(row){
       let obj = {};
-      attrArr.forEach(item=>{
-        obj[item] = row[item]
+      attrList.forEach(item=>{
+        obj[item] = row[item];
       });
       list.push(obj);
       if(row[childs]){

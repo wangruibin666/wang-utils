@@ -16,7 +16,7 @@ import * as wUtils from 'wangs-utils/dist/wang_utils';
 
 ## 源码地址
 
-[传送:](https://github.com/wangruibin666/wang-utils)
+[传送:](https://github.com/wangruibin666/wang-utils):https://github.com/wangruibin666/wang-utils
 
 
 
